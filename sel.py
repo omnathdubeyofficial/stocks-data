@@ -63,7 +63,7 @@ cnx = create_mysql_connection();
 
 
 def func5(source_table, destination_table, uploaddate, cnx, size=100):
-    engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+    engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
     cursor = cnx.cursor()
 
     try:
@@ -484,7 +484,7 @@ def func16(table_name,cnx):
 
 def func19(table_data, destination_table, cnx,uploaddate):
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
         # Read data from the account_summary table into a DataFrame
         query = f"SELECT * FROM {table_data}"
@@ -546,7 +546,7 @@ def func21(commented_path, destination_table,uploaddate):
         highlight_fill = PatternFill(start_color="FFD580", end_color="FFD580",  fill_type="solid")
 
         # Create a connection to the MySQL database
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?connect_timeout=60')
     
         # Load the stock data from the MySQL table
         stock_data_query = f"SELECT name, holding_summary FROM {destination_table} WHERE    uploaddate = '{uploaddate}'"
@@ -621,7 +621,7 @@ def func22(commented_nonbank_path, destination_table,uploaddate):
         highlight_fill = PatternFill(start_color="FFD580", end_color="FFD580",  fill_type="solid")
 
         # Create a connection to the MySQL database
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?connect_timeout=60')
     
         # Load the stock data from the MySQL table
         stock_data_query = f"SELECT name, holding_summary FROM {destination_table} WHERE    uploaddate = '{uploaddate}'"
@@ -793,7 +793,7 @@ def func17(csv_file, table_name,cnx):
 #Create an index on the name column to speed up the update process only for first time.
 def func18(table1, table2, cnx,uploaddate):
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?connect_timeout=60')
 
         query = f"SELECT * FROM {table1} WHERE uploaddate = '{uploaddate}'"
         data1 = pd.read_sql(query,con = engine)
@@ -842,7 +842,7 @@ def func18(table1, table2, cnx,uploaddate):
 
 def func20(table1,destination_table,cnx,uploaddate):
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/  {db_database}?connect_timeout=60')
 
         query = f'SELECT * from {table1}'
         data1 = pd.read_sql(query, con = engine)
@@ -905,7 +905,7 @@ def func20(table1,destination_table,cnx,uploaddate):
 
 def func24(holding_file, destination_table, cnx, uploaddate):
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
         query = f"SELECT * FROM {destination_table} WHERE uploaddate = '{uploaddate}'"
         data1 = pd.read_sql(query, con=engine)
@@ -982,7 +982,7 @@ def func24(holding_file, destination_table, cnx, uploaddate):
 
 def func25(holding_file, destination_table, cnx, uploaddate):
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
         query = f"SELECT * FROM {destination_table} WHERE uploaddate = '{uploaddate}'"
         data1 = pd.read_sql(query, con=engine)
@@ -1105,7 +1105,7 @@ def func26(file_path, table_name, cnx):
 def func27(table, destination_table, file_path, cnx, uploaddate):
     try:
         # Create the SQLAlchemy engine
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
         # Read the data from the SQL tables
         sql_query = f'SELECT * FROM {table}'
@@ -1186,7 +1186,7 @@ def func27(table, destination_table, file_path, cnx, uploaddate):
 def func28(table, destination_table, file_path, cnx, uploaddate):
     try:
         # Create the SQLAlchemy engine
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
         # Read the data from the SQL tables
         sql_query = f'SELECT * FROM {table}'
@@ -1746,7 +1746,7 @@ excel_columns_banks = [
 def func6(uploaddate,destination_table,cnx):
 
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
 
         # Read data from the source table into a DataFrame
@@ -1815,7 +1815,7 @@ def func7(uploaddate,destination_table,cnx):
 
 
     try:
-        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?ssl_disabled=true&connect_timeout=60')
+        engine = create_engine(f'mysql+mysqlconnector://{db_user}:{db_password}@{ip_addr}/{db_database}?connect_timeout=60')
 
 
         # Read data from the source table into a DataFrame
@@ -2986,9 +2986,11 @@ def main():
                 func24(holding_bank_file,destination_table,cnx,dateObj)  
                 func25(holding_nonbank_file, destination_table, cnx, dateObj) 
             elif selected_function == 26:
-                func26(fnolist,fnotbale,cnx)
+                # func26(fnolist,fnotbale,cnx)
                 func27(fnotbale, destination_table,volume_commented_bank_file, cnx,dateObj)
                 func28(fnotbale, destination_table,volume_commented_nonbank_file, cnx,dateObj)
+                func29(volume_fno_bank)
+                func30(volume_fno_nonbank)
             elif selected_function == 29:
                 # func29(volume_fno_bank)
                 # func30(volume_fno_nonbank)
