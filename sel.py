@@ -1,4 +1,4 @@
-print("Hellosss")
+print("Hello")
 import sys
 import time
 import os
